@@ -1,0 +1,85 @@
+{
+  "tasks":
+  [
+    {
+      "id": 0,
+      "title": "Call Mom",
+      "description": "Discuss upcoming family reunion plans.",
+      "duration": "30 minutes",
+      "due_date": "2024-03-25",
+      "category": "Family"
+    },
+    {
+      "id": 1,
+      "title": "Buy groceries",
+      "description": "Pick up ingredients for Sunday family dinner.",
+      "duration": "1 hour",
+      "due_date": "2024-03-23",
+      "category": "Family"
+    },
+    {
+      "id": 2,
+      "title": "Visit grandparents",
+      "description": "Spend quality time with family elders.",
+      "duration": "2 hours",
+      "due_date": "2024-03-27",
+      "category": "Family"
+    },
+    {
+      "id": 3,
+      "title": "Prepare kids for school",
+      "description": "Help with homework and pack lunches.",
+      "duration": "45 minutes",
+      "due_date": "2024-03-24",
+      "category": "Family"
+    },
+    {
+      "id": 4,
+      "title": "Attend parent-teacher meeting",
+      "description": "Discuss child's progress in school.",
+      "duration": "1 hour",
+      "due_date": "2024-03-26",
+      "category": "Family"
+    },
+    {
+      "id": 5,
+      "title": "Finish presentation slides",
+      "description": "Complete slides for the upcoming project presentation.",
+      "duration": "1.5 hours",
+      "due_date": "2024-03-25",
+      "category": "Work"
+    },
+    {
+      "id": 6,
+      "title": "Go for a jog",
+      "description": "Enjoy a refreshing jog in the park to stay fit.",
+      "duration": "45 minutes",
+      "due_date": "2024-03-23",
+      "category": "Health"
+    },
+    {
+      "id": 7,
+      "title": "Read book",
+      "description": "Spend some time reading the latest novel to relax.",
+      "duration": "1 hour",
+      "due_date": "2024-03-27",
+      "category": "Leisure"
+    },
+    {
+      "id": 8,
+      "title": "Grocery shopping",
+      "description": "Buy essential groceries for the week.",
+      "duration": "1 hour",
+      "due_date": "2024-03-24",
+      "category": "Personal"
+    },
+    {
+      "id": 9,
+      "title": "Call friend",
+      "description": "Catch up with an old friend over the phone.",
+      "duration": "30 minutes",
+      "due_date": "2024-03-26",
+      "category": "Social"
+    }
+  ]
+}

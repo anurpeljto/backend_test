@@ -1,0 +1,28 @@
+{
+    "tasks": [
+      {
+        "title": "Finish coding the homepage",
+        "description": "Make sure to test all the links and buttons.",
+        "due-date": "2023-03-31",
+        "status": "not finished yet"
+      },
+      {
+        "title": "Review the project documentation",
+        "description": "Check if all the features are covered and the documentation is up-to-date.",
+        "due-date": "2023-03-15",
+        "status": "not finished yet"
+      },
+      {
+        "title": "Test the contact form",
+        "description": "Send a test email to make sure the form is working properly.",
+        "due-date": "2023-03-20",
+        "status": "finished"
+      },
+      {
+        "title": "Optimize the website for mobile devices",
+        "description": "Make sure the website looks good and functions well on all mobile devices.",
+        "due-date": "2023-03-25",
+        "status": "finished"
+      }
+    ]
+  }

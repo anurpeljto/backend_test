@@ -1,0 +1,120 @@
+{
+  "users": [
+    {
+      "username": "emacossokic",
+      "password": "password123",
+      "email": "emaasil@gmail.com"
+    },
+    {
+      "username": "emcosokic",
+      "password": "password123",
+      "email": "email.example.com"
+    },
+    {
+      "firstName": "asd",
+      "lastName": "asd",
+      "email": "asdasd@gmail.com",
+      "password": "asd"
+    },
+    {
+      "firstName": "dummy",
+      "lastName": "account",
+      "email": "dummyaccount@gmail.com",
+      "password": "dummy"
+    },
+    {
+      "firstName": "dummy",
+      "lastName": "account",
+      "email": "dummmyaccount@gmail.com",
+      "password": "dummy"
+    },
+    {
+      "firstName": "dummy",
+      "lastName": "account",
+      "email": "dummamyaccount@gmail.com",
+      "password": "dummy"
+    },
+    {
+      "firstName": "asd",
+      "lastName": "asdasd",
+      "email": "asdasdasda@awsdasdm.com",
+      "password": "asdnuy"
+    },
+    {
+      "firstName": "asd",
+      "lastName": "asdasd",
+      "email": "asdasdasasdda@awsdasdm.com",
+      "password": "asdnuy"
+    },
+    {
+      "firstName": "asd",
+      "lastName": "asdasd",
+      "email": "asdasdasdasasdda@awsdasdm.com",
+      "password": "asdnuy"
+    },
+    {
+      "firstName": "asd",
+      "lastName": "asdasd",
+      "email": "asdasdasas22121dasasdda@awsdasdm.com",
+      "password": "asdnuy"
+    },
+    {
+      "firstName": "asd",
+      "lastName": "asdasd",
+      "email": "asdas1231dasas22121dasasdda@awsdasdm.com",
+      "password": "asdnuy"
+    },
+    {
+      "firstName": "asd",
+      "lastName": "asdasd",
+      "email": "asdas123121dasas22121dasasdda@awsdasdm.com",
+      "password": "asdnuy"
+    },
+    {
+      "firstName": "asd",
+      "lastName": "asdasd",
+      "email": "a222wwasdas123121dasas22121dasasdda@awsdasdm.com",
+      "password": "asdnuy"
+    },
+    {
+      "firstName": "asd",
+      "lastName": "asdasd",
+      "email": "myacc@amsd.com",
+      "password": "asdnuy"
+    },
+    {
+      "firstName": "asd",
+      "lastName": "asdasd",
+      "email": "smyacc@amsd.com",
+      "password": "asdnuy"
+    },
+    {
+      "firstName": "asd",
+      "lastName": "asdasd",
+      "email": "ssmyacc@amsd.com",
+      "password": "asdnuy"
+    },
+    {
+      "firstName": "asd",
+      "lastName": "asdasd",
+      "email": "sssmyacc@amsd.com",
+      "password": "asdnuy"
+    },
+    {
+      "firstName": "asd",
+      "lastName": "asdasd",
+      "email": "testacc@amsd.com",
+      "password": "asdnuy"
+    },
+    {
+      "firstName": "asdasd",
+      "lastName": "asd",
+      "email": "testlast@gmail.com",
+      "password": "test"
+    },
+    {
+      "password": "dumamy",
+      "email": "testingagain@mail.com"
+    }
+  ]
+}
