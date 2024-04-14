@@ -7,8 +7,7 @@ const login = async(userData) => {
         
         const database = client.db('users-db');
         const users = database.collection('users');
-        const userJson = JSON.parse(userData);
-        const user = await users.findOne({email: userJson.email});
+        const user = await users.findOne({email: userData.email});
 
         if(!user){
             throw new Error('User not registered');
