@@ -1,4 +1,4 @@
-const MongoClient = require('mongodb');
+const {MongoClient} = require('mongodb');
 const uri = process.env.MONGODB_URI;
 
 const login = async(userData) => {
