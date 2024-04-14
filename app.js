@@ -4,25 +4,7 @@ const {register, checkIfExists} = require('./api/register');
 const fs = require('fs').promises;
 const path = require('path');
 const PORT = process.env.PORT || 3000;
-const {MongoClient, ServerApiVersion} = require('mongodb');
-const uri ='mongodb+srv://anurpeljto:VLJNByurSnOlWiEZ@cluster0.khmo7tq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
-// VLJNByurSnOlWiEZ
-const client = new MongoClient(uri, {
-    serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-    }
-});
-
-async function run() {
-    try {
-        const database = client.db('users-db');
-        const users = database.collection('users');
-    } finally{
-    }
-} run();
 
 app.use(express.static('./public/web_project-newProject'));
 app.use(express.json());
@@ -50,11 +32,15 @@ app.get('/', (req, res) => {
     res.status(200).sendFile(path.resolve(__dirname, 'public/web project-newProject'));
 })
 
-app.post('/register', (req, res) => {
+app.post('/register', async(req, res) => {
     const userData = req.body;
-    register(userData);
-    res.redirect('/login');
+    await register(userData);
+    res.redirect('GET /login');
 });
+
+app.get('/login', (req, res) => {
+    res.status(200).sendFile(path.resolve(__dirname, 'public/web project-newProject', 'register.html'));
+})
 
 app.post('/login', async(req,res) => {
     try{

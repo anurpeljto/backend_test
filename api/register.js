@@ -1,48 +1,29 @@
-const fs = require('fs').promises;
+const {MongoClient, ServerApiVersion} = require('mongodb');
+const uri ='mongodb+srv://anurpeljto:VLJNByurSnOlWiEZ@cluster0.khmo7tq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
-// const register = async (userData) => {
-//     try {
-//         // await fs.writeFile('users.json', JSON.stringify(userData), {flag:'a'});
-//         const file = await fs.readFile('users.json');
-//         const users = JSON.parse(file);
+// VLJNByurSnOlWiEZ
+const client = new MongoClient(uri, {
+    serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+    }
+});
 
-//         users.users.push(userData);
-//         await fs.writeFile('users.json', JSON.stringify(users, null, 2));
-//         console.log('Write successful');
-//     } catch (error) {
-//         throw error;
-//     }
-// };
 
-// const checkIfExists = async (userData) => {
-//     try {
-//         const fileData = await fs.readFile('users.json');
-//         const usersObj = JSON.parse(fileData);
-//         const usersArr = usersObj.users;
-        
-//         const existingUser = usersArr.find(user => user.email == userData.email);
-        
-//         if(existingUser){
-//             return true
-//         }
-//         else {
-//             return false
-//         }
-        
-//     } catch (error) {
-//         throw error;
-//     }
-// };
 
-const register = async(users, userData) => {
-    try{
-        const existingUser = await users.findOne({email: userData.email});
-        if(existingUser){
-            throw new Error('User already exists');
+
+const register = async(userData) => {
+    try {
+        const database = client.db('users-db');
+        const users = database.collection('users');
+        if(await users.findOne({email : userData.email})){
+            throw new Error(error);
+        }else {
+            await users.insertOne(userData);
+            console.log('Successfully registered');
         }
         
-        await users.insertOne(userData);
-        console.log('successful write');
     } catch(error){
         throw error;
     }
