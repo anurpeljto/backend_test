@@ -12,12 +12,14 @@ const login = async(userData) => {
         if(!user){
             throw new Error('User not registered');
         }
-        if(user.email == userData.email && user.password == userData.password){
+        if(user.email === userData.email && user.password === userData.password){
             console.log('Successful login');
-
+            return user;
         }
     } catch(Error){
         throw Error;
+    } finally {
+        await client.close();
     }
 }
 
