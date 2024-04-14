@@ -33,9 +33,13 @@ app.get('/', (req, res) => {
 })
 
 app.post('/register', async(req, res) => {
-    const userData = req.body;
-    await register(userData);
-    res.redirect('GET /login');
+    try {
+        const userData = req.body;
+        await register(userData);
+        res.redirect('GET /login');
+    } catch(Error){
+        throw Error;
+    }
 });
 
 app.get('/login', (req, res) => {
