@@ -4,9 +4,45 @@ const {register, checkIfExists} = require('./api/register');
 const fs = require('fs').promises;
 const path = require('path');
 const PORT = process.env.PORT || 3000;
+const {MongoClient, ServerApiVersion} = require('mongodb');
+const uri ='mongodb+srv://anurpeljto:VLJNByurSnOlWiEZ@cluster0.khmo7tq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+
+// VLJNByurSnOlWiEZ
+const client = new MongoClient(uri, {
+    serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+    }
+});
+
+async function run() {
+    try {
+        const database = client.db('users-db');
+        const users = database.collection('users');
+    } finally{
+    }
+} run();
 
 app.use(express.static('./public/web_project-newProject'));
 app.use(express.json());
+
+//mongodb
+
+
+
+// async function run() {
+//     try {
+//       // Connect the client to the server	(optional starting in v4.7)
+//       await client.connect();
+//       // Send a ping to confirm a successful connection
+//       await client.db("admin").command({ ping: 1 });
+//       console.log("Pinged your deployment. You successfully connected to MongoDB!");
+//     } finally {
+//       // Ensures that the client will close when you finish/error
+//       await client.close();
+//     }
+//   }
 
 // routes
 
@@ -14,27 +50,10 @@ app.get('/', (req, res) => {
     res.status(200).sendFile(path.resolve(__dirname, 'public/web project-newProject'));
 })
 
-app.post('/register', async(req, res) => {
-    try {
-        const userData = req.body;
-
-        if(!userData){
-            return res.status(400).send('Error, invalid data');
-        }
-        console.log(userData);
-        const exists = await checkIfExists(userData);
-        if(exists == true){
-            console.log('Already exists');
-            return res.status(400).send('User already registered');
-        }
-
-        await register(userData);
-        console.log('redirecting to homepage');
-        res.redirect('/');
-    } catch (error){
-        console.log(error);
-        res.status(500).send('Internal server error');
-    }
+app.post('/register', (req, res) => {
+    const userData = req.body;
+    register(userData);
+    res.redirect('/login');
 });
 
 app.post('/login', async(req,res) => {
