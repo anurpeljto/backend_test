@@ -53,7 +53,8 @@ app.post('/login', async(req,res) => {
         await login(body);
         res.status(200).redirect('/');
     } catch(error){
-        throw error;
+        res.status(401).send('Failed login, redirecting...');
+        res.redirect('/login');
     }
 })
 

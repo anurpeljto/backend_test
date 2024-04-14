@@ -19,7 +19,7 @@ const login = async(userData) => {
             throw new Error('Invalid username or password');
         }
     } catch(error){
-        throw Error(`${error.message}`);
+        throw error;
     } finally {
         await client.close();
     }
