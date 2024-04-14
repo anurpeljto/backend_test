@@ -9,6 +9,7 @@ const client = new MongoClient(uri);
 
 const register = async(userData) => {
     try {
+        await client.connect();
         const database = client.db('users-db');
         const users = database.collection('users');
         if(await users.findOne({email : userData.email})){

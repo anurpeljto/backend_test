@@ -4,7 +4,7 @@ const client = new MongoClient(uri);
 
 const login = async(userData) => {
     try {
-        
+        await client.connect();
         const database = client.db('users-db');
         const users = database.collection('users');
         const user = await users.findOne({email: userData.email});
