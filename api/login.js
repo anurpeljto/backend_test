@@ -12,7 +12,7 @@ const login = async(userData) => {
         if(!user){
             throw new Error('User not registered');
         }
-        if(user.email == userJson.email && user.password == userData.password){
+        if(user.email == userData.email && user.password == userData.password){
             console.log('Successful login');
 
         }
