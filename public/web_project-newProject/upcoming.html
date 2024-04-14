@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>ToDo List</title>
+
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+
+    
+
+</head>
+
+<body id="page-top">
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        
+
+        <div id="content-wrapper" class="d-flex flex-column bg-white">
+
+            <section class="vh-100">
+                <div class="container py-5 h-100">
+                  <div class="row d-flex justify-content-center align-items-start h-100">
+                    <div class="col">
+                      <div class="card" id="list1" style=" background-color: white;">
+                        <div class="card-body py-4 px-4 px-md-5 h-100" id="upcomingTasks">
+                          
+              
+                          <p class="h1 text-center mt-3 mb-4 pb-3 text-success">
+                            <i class="fas fa-check-square me-1"></i>
+                            <u>Upcoming tasks</u>
+                          </p>
+              
+                          <div class="pb-2">
+                            <div class="d-flex flex-row align-items-center">
+                              <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
+                                placeholder="Add new task...">
+                                <button class="btn" type="button" aria-haspopup="true" aria-expanded="false" id="calendarIcon">
+                                  <input type="date" id="due-date-input" class="form-control">                                  
+                              </button>
+                              <div>
+                                <button type="button" class="btn btn-success">Add</button>
+                              </div>
+                            </div>
+                          </div>
+              
+                          <hr class="my-4">
+          
+              
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+            </div>
+            <!-- End of Main Content -->
+
+            
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AJAX for upcoming page. The difference is that it sorts tasks and limits to displaying only three -->
+    <script>
+      $(document).ready(function () {
+          $.ajax({
+              url: 'data.json',
+              dataType: 'json',
+              success: function (data) {
+                  var tasks = data.tasks;
+
+
+                  tasks.sort((a,b) => {
+                    return new Date(a['due-date']) - new Date(b['due-date']);
+                  });
+
+                  var upcTasks = tasks.slice(0,3);
+
+                  upcTasks.forEach(function(task) {
+                      var ulElement = $('<ul>').addClass('list-group list-group-horizontal rounded-0 bg-transparent');
+  
+                      var liCheckbox = $('<li>').addClass('list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent');
+                      if (task.status == "finished"){
+                        var checkbox = $('<div>').addClass('form-check').html('<input class="form-check-input me-0" type="checkbox" value="" aria-label="..." checked />');
+                      } else {
+                        var checkbox = $('<div>').addClass('form-check').html('<input class="form-check-input me-0" type="checkbox" value="" aria-label="..."  />');
+
+                      }
+                      liCheckbox.append(checkbox);
+                      ulElement.append(liCheckbox);
+  
+                      var liTitle = $('<li>').addClass('list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent').html('<p class="lead fw-normal mb-0">' + task.title + '</p>');
+                      ulElement.append(liTitle);
+  
+                      var liActions = $('<li>').addClass('list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent');
+                      var actionIcons = $('<div>').addClass('d-flex flex-row justify-content-end');
+                      actionIcons.html('<a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i class="fas fa-pencil-alt mr-3"></i></a>' +
+                                       '<a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i class="fas fa-trash-alt"></i></a>');
+                      liActions.append(actionIcons);
+                      var createdDate = new Date(task['due-date']);
+                      liActions.append('<div class="text-end text-muted"><a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date"><p class="small mb-0"></i>' + createdDate.toLocaleDateString() + '</p></a></div>');
+                      ulElement.append(liActions);
+  
+                      $('#upcomingTasks').append(ulElement);
+                  });
+              }
+          });
+          
+      });
+
+
+      
+  </script>
+  
+  
+    
+
+</body>
+
+</html>
