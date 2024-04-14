@@ -15,9 +15,11 @@ const login = async(userData) => {
         if(user.email === userData.email && user.password === userData.password){
             console.log('Successful login');
             return user;
+        } else {
+            throw new Error('Invalid username or password');
         }
-    } catch(Error){
-        throw Error;
+    } catch(error){
+        throw Error(`${error.message}`);
     } finally {
         await client.close();
     }
