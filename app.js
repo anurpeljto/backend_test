@@ -3,7 +3,7 @@ const app = express();
 const {register, checkIfExists} = require('./api/register');
 const fs = require('fs').promises;
 const path = require('path');
-const login = require('./api/login');
+const {login} = require('./api/login');
 const PORT = process.env.PORT || 3000;
 
 
@@ -48,31 +48,6 @@ app.get('/login', (req, res) => {
 })
 
 app.post('/login', async(req,res) => {
-    // try{
-    //     const userData = req.body;
-    //     // const exists = await checkIfExists(userData);
-
-    //     // if(exists == false){
-    //     //     console.log('User found in database');
-    //     // }
-
-    //     const localData = await fs.readFile('users.json');
-    //     const localDataObj = JSON.parse(localData);
-    //     const usersArray = localDataObj.users;
-
-    //     const findPw = usersArray.find(user => user.email == userData.email);
-
-    //     if(findPw.password == userData.password){
-    //         return res.redirect('/');
-    //     }
-    //     else {
-    //         return res.status(201).send('Works & pw incorrect');
-    //     }
-        
-    // } catch (error){
-    //     console.error(error);
-    // }
-
     try {
         const body = req.body;
         await login(body);
