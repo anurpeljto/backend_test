@@ -1,11 +1,12 @@
 const {MongoClient} = require('mongodb');
 const uri = process.env.MONGODB_URI;
+const client = new MongoClient(uri);
 
 const login = async(userData) => {
     try {
-        const client = new MongoClient(uri);
+        
         const database = client.db('users-db');
-        const users = client.collection('users');
+        const users = database.collection('users');
         const userJson = JSON.parse(userData);
         const user = await users.findOne({email: userJson.email});
 
