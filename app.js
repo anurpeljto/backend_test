@@ -3,12 +3,16 @@ const app = express();
 const {register, checkIfExists} = require('./api/register');
 const fs = require('fs').promises;
 const path = require('path');
+const PORT = process.env.PORT || 3000;
 
 app.use(express.static('./public/web_project-newProject'));
 app.use(express.json());
 
 // routes
 
+app.get('/', (req, res) => {
+    res.status(200).sendFile(path.resolve(__dirname, 'public/web project-newProject'));
+})
 
 app.post('/register', async(req, res) => {
     try {
@@ -67,6 +71,6 @@ app.get('*', (req, res) => {
 
 
 
-app.listen(5000, () => {
-    console.log('Server running on port 5000');
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 })
