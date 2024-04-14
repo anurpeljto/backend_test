@@ -3,6 +3,7 @@ const app = express();
 const {register, checkIfExists} = require('./api/register');
 const fs = require('fs').promises;
 const path = require('path');
+const login = require('./api/login');
 const PORT = process.env.PORT || 3000;
 
 
@@ -43,33 +44,41 @@ app.post('/register', async(req, res) => {
 });
 
 app.get('/login', (req, res) => {
-    res.status(200).sendFile(path.resolve(__dirname, 'public/web project-newProject', 'register.html'));
+    res.status(200).sendFile(path.resolve(__dirname, 'public/web project-newProject', 'index.html'));
 })
 
 app.post('/login', async(req,res) => {
-    try{
-        const userData = req.body;
-        // const exists = await checkIfExists(userData);
+    // try{
+    //     const userData = req.body;
+    //     // const exists = await checkIfExists(userData);
 
-        // if(exists == false){
-        //     console.log('User found in database');
-        // }
+    //     // if(exists == false){
+    //     //     console.log('User found in database');
+    //     // }
 
-        const localData = await fs.readFile('users.json');
-        const localDataObj = JSON.parse(localData);
-        const usersArray = localDataObj.users;
+    //     const localData = await fs.readFile('users.json');
+    //     const localDataObj = JSON.parse(localData);
+    //     const usersArray = localDataObj.users;
 
-        const findPw = usersArray.find(user => user.email == userData.email);
+    //     const findPw = usersArray.find(user => user.email == userData.email);
 
-        if(findPw.password == userData.password){
-            return res.redirect('/');
-        }
-        else {
-            return res.status(201).send('Works & pw incorrect');
-        }
+    //     if(findPw.password == userData.password){
+    //         return res.redirect('/');
+    //     }
+    //     else {
+    //         return res.status(201).send('Works & pw incorrect');
+    //     }
         
-    } catch (error){
-        console.error(error);
+    // } catch (error){
+    //     console.error(error);
+    // }
+
+    try {
+        const body = req.body;
+        await login(body);
+        res.status(200).redirect('/');
+    } catch(error){
+        throw error;
     }
 })
 
