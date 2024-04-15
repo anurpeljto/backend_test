@@ -16,9 +16,11 @@ const register = async(userData) => {
         if(await users.findOne({email : userData.email})){
             throw new Error(error);
         }else {
-            bcrypt.hash(userData.password, saltRounds, function(err, hash) {
-                 userData.password = hash;
-                 users.insertOne(userData);
+            bcrypt.genSalt(10, function(err, salt) {
+                bcrypt.hash(userData.password, salt, function(err, hash) {
+                    userData.password = hash;
+                    users.insertOne(userData);
+                });
             });
             console.log('Successfully registered');
         }
