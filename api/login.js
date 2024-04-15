@@ -1,6 +1,7 @@
 const {MongoClient} = require('mongodb');
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
+const bcrypt = require('bcrypt');
 
 const login = async(userData) => {
     try {
@@ -12,7 +13,7 @@ const login = async(userData) => {
         if(!user){
             throw new Error('User not registered');
         }
-        if(user.email === userData.email && user.password === userData.password){
+        if(user.email === userData.email && bcrypt.compare(userData.password, user.password)){
             console.log('Successful login');
             return user;
         } else {
