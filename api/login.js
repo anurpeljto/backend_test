@@ -19,9 +19,9 @@ const login = async(userData) => {
         } else {
             throw new Error('Invalid username or password');
         }
-    } finally {
-        await client.close();
-    }
+    } catch (Error){
+        throw Error;
+    } 
 }
 
 module.exports = {login};
