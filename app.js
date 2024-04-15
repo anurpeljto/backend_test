@@ -59,7 +59,7 @@ app.post('/login', async(req,res) => {
 })
 
 app.get('*', (req, res) => {
-    res.status(200).sendFile(path.resolve(__dirname, 'public/web_project-newProject', 'index.html'));
+    res.status(200).sendFile(path.resolve(__dirname, 'public/web_project-newProject', 'register.html'));
 });
 
 
