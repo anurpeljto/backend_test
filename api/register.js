@@ -1,6 +1,6 @@
 const {MongoClient, ServerApiVersion} = require('mongodb');
 const uri = process.env.MONGODB_URI;
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const saltRounds = 10;
 const client = new MongoClient(uri);

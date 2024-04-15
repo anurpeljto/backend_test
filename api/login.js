@@ -1,7 +1,7 @@
 const {MongoClient} = require('mongodb');
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const login = async(userData) => {
     try {
