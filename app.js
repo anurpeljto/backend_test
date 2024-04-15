@@ -30,7 +30,7 @@ app.use(express.json());
 // routes
 
 app.get('/', (req, res) => {
-    res.status(200).sendFile(path.resolve(__dirname, 'public/web project-newProject'));
+    res.status(200).sendFile(path.resolve(__dirname, 'public/web project-newProject', 'register.html'));
 })
 
 app.post('/register', async(req, res) => {
